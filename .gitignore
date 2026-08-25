@@ -28,7 +28,7 @@ out/
 
 
 # Ignore the entire .vscode folder
-.vscode/
+.vscode/*
 
 # Allow tracking of specific team-wide configuration files
 !.vscode/tasks.json
@@ -36,6 +36,6 @@ out/
 
 
 # Third-party dependencies
-THIRD_PARTY/
+THIRD_PARTY/*
 
 !THIRD_PARTY/glaze/
