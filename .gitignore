@@ -1,0 +1,41 @@
+# Pre-compiled Binaries
+*.exe
+*.dll
+*.so
+*.dylib
+
+# MSVC generated build files
+*.ilk
+*.pdb
+*.obj
+*.iobj
+*.ipdb
+*.log
+*.tlog
+
+# Precompiled header files
+*.pch
+
+# Visual Studio hidden directories & cache
+.vs/
+x64/
+x86/
+Debug/
+Release/
+ARM/
+ARM64/
+out/
+
+
+# Ignore the entire .vscode folder
+.vscode/
+
+# Allow tracking of specific team-wide configuration files
+!.vscode/tasks.json
+!.vscode/c_cpp_properties.json
+
+
+# Third-party dependencies
+THIRD_PARTY/
+
+!THIRD_PARTY/glaze/
