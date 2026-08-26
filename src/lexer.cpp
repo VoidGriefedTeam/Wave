@@ -1,11 +1,19 @@
-#include <pch.h>
+// Copyright © 2026  voidgriefedteam
 
-struct def
-{
-    std::vector<std::string> code;
-    std::unordered_map<std::string, std::string> data;
-    std::vector<std::string> import;
-};
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// any later version.
+
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <https://www.gnu.org/licenses/>
+
+#include <generator.hpp>
 
 int main(int argc, char* argv[])
 {
@@ -28,7 +36,7 @@ int main(int argc, char* argv[])
     while (file >> word)
         words.push_back(word);
 
-    def config;
+    dat config;
 
     if (words[0].starts_with("print(\"") && words[0].ends_with("\")")) {
         config.import = {
@@ -39,8 +47,7 @@ int main(int argc, char* argv[])
         };
         std::string value = words[0].substr(6, words[0].size() - 7);
         config.data["DATA"] = value;
-        std::string buffer;
-        auto error = glz::write_file_json(config, "output.json", buffer);
+        generate_code(config);
     }
     
 }
