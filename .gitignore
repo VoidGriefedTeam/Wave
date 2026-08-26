@@ -27,6 +27,7 @@ ARM64/
 out/
 
 
+
 # Ignore the entire .vscode folder
 .vscode/*
 
@@ -34,8 +35,13 @@ out/
 !.vscode/tasks.json
 !.vscode/c_cpp_properties.json
 
-
 # Third-party dependencies
 THIRD_PARTY/*
 
-!THIRD_PARTY/glaze/
+# Allow tracking of redistributable third-party dependencies
+!THIRD_PARTY/include/
+!THIRD_PARTY/include/glaze/
+!THIRD_PARTY/include/glaze/**
+
+# CMAKE build files
+build/
