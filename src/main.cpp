@@ -13,31 +13,22 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>
 
-#include <generator.hpp>
 #include <lexer.hpp>
 
-void parse(std::ifstream& file)
+int main(int argc, char* argv[])
 {
-   
-    std::vector<std::string> words;
-    std::string word;
-
-    while (file >> word)
-        words.push_back(word);
-
-    dat config;
-
-    if (words[0].starts_with("print(\"") && words[0].ends_with("\")")) {
-        config.import = {
-            "<print>"
-        };
-        config.code = {
-            "std::print(DATA);"
-        };
-        std::string value = words[0].substr(6, words[0].size() - 7);
-        config.data["DATA"] = value;
-        generate_code(config);
+    if (argc < 2)
+    {
+        std::cout << "Usage: main.exe <file.wave>\n";
+        return 1;
     }
-    
-}
 
+    std::ifstream file(argv[1]);
+
+    if (!file.is_open())
+    {
+        std::cout << "Could not open: " << argv[1] << '\n';
+        return 1;
+    }
+    parse(file);
+}

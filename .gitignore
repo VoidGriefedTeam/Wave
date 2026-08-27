@@ -25,15 +25,7 @@ Release/
 ARM/
 ARM64/
 out/
-
-
-
-# Ignore the entire .vscode folder
-.vscode/*
-
-# Allow tracking of specific team-wide configuration files
-!.vscode/tasks.json
-!.vscode/c_cpp_properties.json
+.vscode/
 
 # Third-party dependencies
 THIRD_PARTY/*
