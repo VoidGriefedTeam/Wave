@@ -1,0 +1,9 @@
+{
+    "print()": {
+        "import" : "<print>",
+        "code" : "std::print(DATA);",
+        "data":[
+            "DATA"
+        ]
+    }
+}

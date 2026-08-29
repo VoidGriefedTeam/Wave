@@ -1,4 +1,5 @@
 // Copyright © 2026  voidgriefedteam
+
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
@@ -13,10 +14,22 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>
 
 #pragma once
-
 #include <pch.hpp>
-#include <translator.hpp>
-#include <algorithm>
+#include <lexer.hpp>
+#include <map>
+#include <regex>
 
-std::vector<std::string> removeDuplicates(std::vector<std::string> vec);
-void generate_code(const ret& translated, const std::string& filename);
+
+struct ret
+{
+    std::vector<std::string> imp;
+    std::vector<std::string> code;
+};
+
+ret translate(const extdat& data);
+std::string replace_exact_key(
+    std::string instruction,
+    const std::string& key,
+    const std::string& value
+);
+

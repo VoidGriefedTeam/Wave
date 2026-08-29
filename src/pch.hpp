@@ -20,6 +20,7 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+#include <glaze/glaze.hpp>
 
 struct dat
 {

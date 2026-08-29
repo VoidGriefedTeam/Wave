@@ -15,40 +15,38 @@
 
 #include <generator.hpp>
 
-std::string replace_exact_key(
-    std::string instruction,
-    const std::string& key,
-    const std::string& value)
+std::vector<std::string> removeDuplicates(std::vector<std::string> vec)
 {
-    std::regex key_pattern("\\b" + key + "\\b");
+    std::vector<std::string> result;
 
-    return std::regex_replace(instruction, key_pattern, value);
+    for (int i = 0; i < vec.size(); i++)
+    {
+        if (std::find(result.begin(), result.end(), vec[i]) == result.end())
+        {
+            result.push_back(vec[i]);
+        }
+    }
+
+    return result;
 }
 
-void generate_code(const dat& config)
+void generate_code(const ret& translated, const std::string& output)
 {
-    std::string instruction;
-    std::string key;
-    std::string real_value;
-    std::vector<std::string> keys;
-    std::vector<std::string> values;
-    int index = 0;
-
-    for (const auto& entry : config.data)
-    {
-        keys.push_back(entry.first);
-        values.push_back(entry.second);
-    }
     
-    instruction = config.code[index];
-    key = keys[index];
-    real_value = values[index];
-    std::string final_code = replace_exact_key(instruction, key, real_value);
+    std::fstream file(output, std::ios::out | std::ios::trunc);
 
-    std::ofstream file("output.cpp");
-    file << "#include " << config.import[index] << "\n";
+    std::vector<std::string> imps = removeDuplicates(translated.imp); 
+
+    for (int i = 0; i < imps.size(); i++)
+    {
+        file << imps[i] << "\n";
+    }
+
     file << "int main() {\n";
-    file << final_code << "\n";
-    file << "}\n";
-    file.close();
+
+    for (int b = 0; b < translated.code.size(); b++)
+    {
+        file << translated.code[b] << "\n";
+    }
+    file << "}\n"; 
 }

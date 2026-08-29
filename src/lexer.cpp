@@ -13,31 +13,60 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>
 
-#include <generator.hpp>
+#include <lexer.hpp>
 #include <lexer.hpp>
 
-void parse(std::ifstream& file)
+
+std::vector<std::string> parse(std::ifstream& file)
 {
-   
     std::vector<std::string> words;
     std::string word;
 
-    while (file >> word)
+    while (std::getline(file, word))
         words.push_back(word);
 
-    dat config;
-
-    if (words[0].starts_with("print(\"") && words[0].ends_with("\")")) {
-        config.import = {
-            "<print>"
-        };
-        config.code = {
-            "std::print(DATA);"
-        };
-        std::string value = words[0].substr(6, words[0].size() - 7);
-        config.data["DATA"] = value;
-        generate_code(config);
-    }
-    
+    return words;
 }
+
+extdat extract(const std::vector<std::string>& words)
+{
+    extdat data;
+
+    for (const std::string& line : words)
+    {
+        size_t open = 0;
+
+        while ((open = line.find('(', open)) != std::string::npos)
+        {
+            size_t close = line.find(')', open + 1);
+
+            if (close == std::string::npos)
+                break;
+
+            // Find the beginning of the keyword
+            size_t start = open;
+
+            while (start > 0 &&
+                   line[start - 1] != ' ' &&
+                   line[start - 1] != '\t')
+            {
+                start--;
+            }
+
+            // keyword INCLUDING ()
+            std::string keyword = line.substr(start, open - start) + "()";
+            data.keywords.push_back(keyword);
+
+            // value INSIDE ()
+            data.values.push_back(
+                line.substr(open + 1, close - open - 1)
+            );
+
+            open = close + 1;
+        }
+    }
+
+    return data;
+}
+
 
