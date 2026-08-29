@@ -24,6 +24,7 @@
 #include <fmt/color.h>
 #include <fmt/format.h>
 
+#ifdef _WIN32
 std::string find_msvc()
 {
     std::string command =
@@ -49,6 +50,7 @@ std::string find_msvc()
 
     return result;
 }
+#endif
 
 int main(int argc, char* argv[])
 {
@@ -123,7 +125,7 @@ int main(int argc, char* argv[])
 
 
         #elif defined(__linux__)
-        std::print("[Wave]OS:Linux");
+        std::println("[Wave]OS:Linux");
         if (std::system("g++ --version > /dev/null 2>&1") != 0)
         {
             fmt::print(fg(fmt::color::yellow), "[Wave] Error: g++ was not found.\n");
@@ -162,7 +164,9 @@ int main(int argc, char* argv[])
 
         }
 
-        std::system(("g++ \"" + output + "\" -o \"" + std::filesystem::path(output).replace_extension("").string() + "\"").c_str());
+        std::system(("g++ -std=c++23 \"" + output + "\" -o \"" +
+    std::filesystem::path(output).replace_extension("").string() +
+    "\"").c_str());
 
         #else
         std::print("[Wave] Sorry! OS unsupported");
