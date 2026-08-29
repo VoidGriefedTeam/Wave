@@ -1,8 +1,101 @@
 {
-    "print()": {
+    "print()":
+    {
         "import" : "<print>",
         "code" : "std::print(DATA);",
         "data":[
+            "DATA"
+        ]
+    },
+
+    "println()": 
+    {
+        "import" : "<print>",
+        "code" : "std::println(DATA);",
+        "data" : 
+        [
+            "DATA"
+        ]
+    },
+    
+    "sqrt()":
+    {
+        "import" : "<cmath>",
+        "code" : "std::sqrt(DATA);",
+        "data" : 
+        [
+            "DATA"
+        ]
+    },
+
+    "floor()": {
+        "import": "<cmath>",
+        "code": "std::floor(DATA);",
+        "data": [
+            "DATA"
+        ]
+    },
+
+    "ceil()": {
+        "import": "<cmath>",
+        "code": "std::ceil(DATA);",
+        "data": [
+            "DATA"
+        ]
+    },
+
+    "abs()": {
+        "import": "<cmath>",
+        "code": "std::abs(DATA);",
+        "data": [
+            "DATA"
+        ]
+    },
+
+    "sin()": {
+        "import": "<cmath>",
+        "code": "std::sin(DATA);",
+        "data": [
+            "DATA"
+        ]
+    },
+
+    "cos()": {
+        "import": "<cmath>",
+        "code": "std::cos(DATA);",
+        "data": [
+            "DATA"
+        ]
+    },
+
+    "tan()": {
+        "import": "<cmath>",
+        "code": "std::tan(DATA);",
+        "data": [
+            "DATA"
+        ]
+    },
+
+    "asin()": {
+        "import": "<cmath>",
+        "code": "std::asin(DATA);",
+        "data": [
+            "DATA"
+        ]
+    },
+
+    "acos()": {
+        "import": "<cmath>",
+        "code": "std::acos(DATA);",
+        "data": [
+            "DATA"
+        ]
+    },
+
+    "atan()": {
+        "import": "<cmath>",
+        "code": "std::atan(DATA);",
+        "data": [
             "DATA"
         ]
     }
