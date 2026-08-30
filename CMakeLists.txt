@@ -3,11 +3,17 @@ project(wave)
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
+
+if(WIN32)
+    set(WAVE_RC_FILE ${CMAKE_SOURCE_DIR}/wave.rc)
+endif()
+
 add_executable(wave
     src/lexer.cpp
     src/generator.cpp
     src/main.cpp
     src/translator.cpp
+	 ${WAVE_RC_FILE}
 )
 
 if(MSVC)
