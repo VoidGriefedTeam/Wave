@@ -6,7 +6,7 @@
 [![GitHub License](https://img.shields.io/github/license/VoidGriefedTeam/Wave?style=flat-square)](https://github.com/VoidGriefedTeam/Wave/blob/main/LICENSE)
 [![Last Commit](https://img.shields.io/github/last-commit/VoidGriefedTeam/Wave?style=flat-square)](https://github.com/VoidGriefedTeam/Wave/commits/main)
 [![Issues](https://img.shields.io/github/issues/VoidGriefedTeam/Wave?style=flat-square)](https://github.com/VoidGriefedTeam/Wave/issues)
-[![GitHub Repo stars](https://img.shields.io/github/stars/VoidGriefedTeam/Wave)](https://github.com/VoidGriefedTeam/Wave/stargazers)
+[![GitHub Repo stars](https://img.shields.io/github/stars/VoidGriefedTeam/Wave?style=flat-square)](https://github.com/VoidGriefedTeam/Wave/stargazers)
 <p align="center">
   <strong>Python-like development speed. C++ performance.</strong>
 </p>
